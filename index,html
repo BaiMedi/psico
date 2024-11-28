@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramienta Interactiva - Perfil Psicológico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #01BD39;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #01BD39;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #019e2f;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+        .cta {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .cta a {
+            display: inline-block;
+            text-decoration: none;
+            background: #01BD39;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .cta a:hover {
+            background: #019e2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Diseña un Perfil Psicológico de tu Cliente Ideal</h1>
+        <p>Introduce las características principales de tu audiencia y recibe un perfil psicológico optimizado para adaptar tu estrategia.</p>
+        
+        <form id="perfilForm">
+            <div class="form-group">
+                <label for="edad">Edad promedio de tu cliente:</label>
+                <input type="number" id="edad" name="edad" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="genero">Género predominante:</label>
+                <select id="genero" name="genero" required>
+                    <option value="indiferente">Indiferente</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="intereses">Principales intereses o hobbies:</label>
+                <textarea id="intereses" name="intereses" rows="3" placeholder="Ej. tecnología, deportes, moda" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="dolores">Problemas o "dolores" comunes:</label>
+                <textarea id="dolores" name="dolores" rows="3" placeholder="Ej. falta de tiempo, estrés financiero" required></textarea>
+            </div>
+            <button type="button" onclick="generarPerfil()">Generar Perfil</button>
+        </form>
+        
+        <div id="resultado" class="result" style="display: none;"></div>
+        
+        <div class="cta">
+            <p>Revoluciona tu Negocio con el Poder del Chat Inteligente</p>
+            <a href="https://klicana.work/tdivKK">SÍ! INSCRIBIRME A LUCRACHAT IA!</a>
+        </div>
+    </div>
+
+    <script>
+        function generarPerfil() {
+            const edad = document.getElementById('edad').value;
+            const genero = document.getElementById('genero').value;
+            const intereses = document.getElementById('intereses').value;
+            const dolores = document.getElementById('dolores').value;
+
+            const resultado = `
+                <h2>Perfil Psicológico Generado</h2>
+                <p><strong>Edad Promedio:</strong> ${edad}</p>
+                <p><strong>Género:</strong> ${genero}</p>
+                <p><strong>Intereses Principales:</strong> ${intereses}</p>
+                <p><strong>Problemas Comunes:</strong> ${dolores}</p>
+                <p><strong>Insight:</strong> Este cliente está motivado por ${intereses.split(',')[0]} 
+                y probablemente responde bien a mensajes que abordan sus problemas de ${dolores.split(',')[0]}.</p>
+            `;
+
+            document.getElementById('resultado').innerHTML = resultado;
+            document.getElementById('resultado').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
